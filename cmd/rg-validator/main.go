@@ -29,20 +29,22 @@ func main() {
 	}
 
 	// Decode the rules file
-	var rule rules.Rule
-	err = json.Unmarshal(data, &rule)
+	var rulesArray []rules.Rule
+	err = json.Unmarshal(data, &rulesArray)
 	if err != nil {
 		fmt.Printf("Failed to decode the rules file: %v\n", err)
 		os.Exit(1)
 	}
 
-	// Validate the rule
-	err = validator.ValidateRule(rule)
-	if err != nil {
-		fmt.Printf("Invalid rule: %v\n", err)
-		os.Exit(1)
+	// Validate each rule
+	for _, rule := range rulesArray {
+		err = validator.ValidateRule(rule)
+		if err != nil {
+			fmt.Printf("Invalid rule: %v\n", err)
+			os.Exit(1)
+		}
 	}
 
-	// If the rule is valid, print a success message
-	fmt.Println("The rule is valid!")
+	// If all rules are valid, print a success message
+	fmt.Println("All rules are valid!")
 }
