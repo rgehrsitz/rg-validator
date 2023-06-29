@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 
 	"github.com/rgehrsitz/rg-validator/pkg/validator"
@@ -22,7 +21,7 @@ func main() {
 	}
 
 	// Read the rules file
-	data, err := ioutil.ReadFile(*rulesFile)
+	data, err := os.ReadFile(*rulesFile)
 	if err != nil {
 		fmt.Printf("Failed to read the rules file: %v\n", err)
 		os.Exit(1)
