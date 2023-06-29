@@ -7,8 +7,8 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/rgehrsitz/rg-validator/pkg/validator"
 	"github.com/rgehrsitz/rulegopher/pkg/rules"
-	"github.com/yourusername/rg-validator/pkg/validator"
 )
 
 func main() {
